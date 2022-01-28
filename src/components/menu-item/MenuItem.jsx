@@ -8,7 +8,6 @@ export const MenuItem = ({ title, imageUrl, size }) => {
         <div
             style={{backgroundImage: `url(${imageUrl})`}}
             className={`${size} menu-item`}
-            // onClick={() => { navigate() }}
         >
             <div 
                 className='background-image' 

@@ -1,0 +1,13 @@
+.defaultpage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 80px;
+
+  .go-home-link {
+    font-size: xx-large;
+    color: cadetblue;
+    font-weight: bold;
+    border-bottom-style: double;
+  }
+}

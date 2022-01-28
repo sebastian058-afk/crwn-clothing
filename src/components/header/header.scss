@@ -20,6 +20,13 @@
   
       .option {
         padding: 10px 15px;
+        cursor: pointer;
+      }
+
+      .active{
+        border-bottom-width: 1px;
+        border-bottom-color: black;
+        border-bottom-style: groove;
       }
     }
   }

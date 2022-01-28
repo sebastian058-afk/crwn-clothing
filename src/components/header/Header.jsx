@@ -1,17 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { auth } from '../../firebase/firebase.utils';
 import { ReactComponent as Logo} from '../../assets/crown.svg';
 import './header.scss';
 
-export const Header = () => {
+export const Header = ( {currentUser} ) => {
+
+    const handleSignOut = () => auth.signOut();
+
     return (
         <div className='header'>
-            <Link className='logo-container' to="/">
+            <NavLink className='logo-container' to="/">
                 <Logo className='logo'/>
-            </Link>
+            </NavLink>
             <div className='options'>
-                <Link className='option' to='/shop'>SHOP</Link>
-                <Link className='option' to='/shop'>CONTACT</Link>
+                <NavLink className={`${({ isActive }) => (isActive && 'active' )} option`} to='/shop'>SHOP</NavLink>
+                <NavLink className={`${({ isActive }) => (isActive && 'active' )} option`} to='/contact'>CONTACT</NavLink>
+                
+                {
+                    currentUser ? 
+                    <div className='option' onClick={handleSignOut} >SIGN OUT</div> 
+                    : 
+                    <NavLink className={`${({ isActive }) => (isActive && 'active')} option`} to='/signin'>SIGN IN</NavLink>
+                }
             </div>
         </div>
     )
