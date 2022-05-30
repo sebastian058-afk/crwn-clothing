@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { CollectionItem } from '../CollectionItem/CollectionItem';
 
-import './collection-preview.scss';
+import './collectionPreview.scss';
 
 export const CollectionPreview = ({ title, items}) => {
 

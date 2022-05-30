@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { HomePage } from '../homepage/HomePage';
 import './defaultpage.scss';
 
 export const DefaultPage = () => {
