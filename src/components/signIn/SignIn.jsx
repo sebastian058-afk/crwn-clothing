@@ -1,9 +1,8 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { CustomButton } from '../CustomButton/CustomButton';
 import { FormInput } from '../form-input/FormInput';
 import { signInWithGooglePopup, createUserDocumentAuth, signInAuthUserWithEmailAndPassword } from '../../firebase/firebase.utils';
 import './signIn.scss';
-import { UserContext } from '../../contexts/user.context';
 
 const defaultFormFields = {
     email: '',
@@ -15,11 +14,8 @@ const SignIn = () => {
     const [formFields, setFormFields] = useState(defaultFormFields)
     const { email, password } = formFields;
 
-    const { setCurrentUser } = useContext(UserContext);
-
     const SignInWithGoogle = async () => {
-        const {user} = await signInWithGooglePopup();
-        await createUserDocumentAuth(user);
+         await signInWithGooglePopup();
     }
 
     const handleChange = event => {
@@ -35,8 +31,7 @@ const SignIn = () => {
         event.preventDefault();
 
         try{
-            const {user} = await signInAuthUserWithEmailAndPassword(email, password);
-            setCurrentUser(user);
+            await signInAuthUserWithEmailAndPassword(email, password);
             resetFormFields();
         }catch(error){
             switch (error.code) {
@@ -78,7 +73,7 @@ const SignIn = () => {
                 />
                 <div className='buttons'>
                     <CustomButton type="submit"> Sign In </CustomButton>
-                    <CustomButton type="button" onClick={SignInWithGoogle} isGoogleSignIn > Google Sign In </CustomButton>
+                    <CustomButton type="button" onClick={SignInWithGoogle} buttonType='google' > Google Sign In </CustomButton>
                 </div>
             </form>
         </div>
